@@ -1,0 +1,975 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para mi Zahidcito 💗</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:"Segoe UI", Arial, sans-serif;
+    background:linear-gradient(135deg,#ffd6e7,#f8b6d3,#ffeaf3);
+    color:#64203f;
+    overflow-x:hidden;
+}
+
+.pagina{
+    display:none;
+    min-height:100vh;
+    padding:50px 20px 120px;
+    text-align:center;
+    animation:aparecer .7s ease;
+}
+
+.pagina.activa{
+    display:block;
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+h1{
+    font-size:clamp(40px,8vw,75px);
+    color:#a51f5b;
+    margin:25px 0;
+}
+
+h2{
+    font-size:clamp(28px,5vw,48px);
+    color:#a51f5b;
+}
+
+h3{
+    color:#9d2858;
+}
+
+p{
+    font-size:19px;
+    line-height:1.7;
+}
+
+.boton{
+    border:none;
+    padding:15px 30px;
+    margin:10px;
+    border-radius:30px;
+    background:#d83c7c;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    box-shadow:0 5px 15px #8b164655;
+    transition:.3s;
+}
+
+.boton:hover{
+    transform:scale(1.07);
+    background:#b92562;
+}
+
+.portada{
+    min-height:75vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.subtitulo{
+    font-size:23px;
+}
+
+.decoracion{
+    position:fixed;
+    bottom:-80px;
+    font-size:30px;
+    animation:flotar 9s linear infinite;
+    pointer-events:none;
+    z-index:-1;
+}
+
+.decoracion:nth-child(1){
+    left:10%;
+    animation-delay:0s;
+}
+
+.decoracion:nth-child(2){
+    left:30%;
+    animation-delay:2s;
+}
+
+.decoracion:nth-child(3){
+    left:50%;
+    animation-delay:4s;
+}
+
+.decoracion:nth-child(4){
+    left:70%;
+    animation-delay:1s;
+}
+
+.decoracion:nth-child(5){
+    left:90%;
+    animation-delay:3s;
+}
+
+@keyframes flotar{
+
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+
+}
+
+.contenedor{
+    max-width:1100px;
+    margin:auto;
+}
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.tarjeta{
+    background:#ffffffc9;
+    padding:30px 20px;
+    border-radius:25px;
+
+    box-shadow:
+    0 10px 25px #8b164633;
+
+    backdrop-filter:blur(5px);
+
+    transition:.3s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-8px);
+}
+
+.emoji{
+    font-size:60px;
+}
+
+.carta{
+    max-width:850px;
+    margin:35px auto;
+
+    padding:45px;
+
+    background:#fff9fc;
+
+    border-radius:30px;
+
+    box-shadow:
+    0 12px 35px #8b164644;
+
+    text-align:left;
+}
+
+.carta h2{
+    text-align:center;
+}
+
+.carta p{
+    color:#64203f;
+}
+
+.globos{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.globo{
+    position:absolute;
+    bottom:-150px;
+    font-size:70px;
+    animation:subirGlobo 9s linear infinite;
+}
+
+.globo:nth-child(1){
+    left:10%;
+    animation-delay:0s;
+}
+
+.globo:nth-child(2){
+    left:30%;
+    animation-delay:2s;
+}
+
+.globo:nth-child(3){
+    left:50%;
+    animation-delay:4s;
+}
+
+.globo:nth-child(4){
+    left:70%;
+    animation-delay:1s;
+}
+
+.globo:nth-child(5){
+    left:90%;
+    animation-delay:3s;
+}
+
+@keyframes subirGlobo{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-120vh);
+    }
+
+}
+
+.galeria{
+    max-width:1100px;
+    margin:40px auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+}
+
+.foto{
+    background:white;
+    padding:10px;
+    border-radius:20px;
+
+    box-shadow:
+    0 8px 25px #8b164655;
+
+    transition:.3s;
+}
+
+.foto:hover{
+    transform:scale(1.03) rotate(1deg);
+}
+
+.foto img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    display:block;
+    border-radius:15px;
+}
+
+
+/* ================================
+   MÚSICA
+================================ */
+
+.reproductor{
+    max-width:850px;
+    margin:50px auto;
+
+    padding:40px;
+
+    background:#ffffffcc;
+
+    border-radius:30px;
+
+    box-shadow:
+    0 10px 30px #8b164633;
+}
+
+.video-musica{
+    width:100%;
+    aspect-ratio:16 / 9;
+
+    border:none;
+
+    border-radius:20px;
+
+    margin-top:25px;
+
+    box-shadow:
+    0 8px 25px #8b164644;
+}
+
+.navegacion{
+    position:fixed;
+
+    bottom:15px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:#ffffffee;
+
+    padding:8px;
+
+    border-radius:40px;
+
+    box-shadow:
+    0 5px 20px #8b164633;
+
+    z-index:100;
+
+    white-space:nowrap;
+}
+
+.navegacion button{
+    border:none;
+
+    background:#d83c7c;
+
+    color:white;
+
+    border-radius:25px;
+
+    padding:10px 14px;
+
+    cursor:pointer;
+
+    margin:3px;
+
+    font-size:14px;
+}
+
+.mensaje-fotos{
+    background:#ffffffcc;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    max-width:700px;
+
+    margin:20px auto;
+
+    font-size:17px;
+}
+
+@media(max-width:600px){
+
+    .carta{
+        padding:25px;
+    }
+
+    .foto img{
+        height:250px;
+    }
+
+    .navegacion{
+        width:96%;
+        overflow-x:auto;
+    }
+
+    .navegacion button{
+        padding:9px 11px;
+    }
+
+    .reproductor{
+        padding:20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- DECORACIONES -->
+
+<div class="decoracion">💗</div>
+<div class="decoracion">🌸</div>
+<div class="decoracion">💕</div>
+<div class="decoracion">🌷</div>
+<div class="decoracion">✨</div>
+
+
+<!-- =====================================
+     PÁGINA 1
+===================================== -->
+
+<section class="pagina activa" id="pagina1">
+
+<div class="portada">
+
+<p class="subtitulo">
+Una pequeña sorpresa para...
+</p>
+
+<h1>
+Para mi Zahidcito 💗
+</h1>
+
+<p>
+Porque hoy es un día muy especial. 🎂
+</p>
+
+<button
+class="boton"
+onclick="comenzar()">
+
+💗 Comenzar
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     PÁGINA 2
+===================================== -->
+
+<section class="pagina" id="pagina2">
+
+<div class="contenedor">
+
+<h2>
+✨ Las cosas más bonitas que me recuerdan a ti ✨
+</h2>
+
+<div class="tarjetas">
+
+<div class="tarjeta">
+
+<div class="emoji">
+🌅
+</div>
+
+<h3>
+Los atardeceres
+</h3>
+
+<p>
+Porque tienen algo especial que hace
+que todo se sienta más bonito.
+</p>
+
+</div>
+
+
+<div class="tarjeta">
+
+<div class="emoji">
+🦖
+</div>
+
+<h3>
+Dinosaurios tiernos
+</h3>
+
+<p>
+Porque hasta los dinosaurios pueden
+ser adorables.
+</p>
+
+</div>
+
+
+<div class="tarjeta">
+
+<div class="emoji">
+🎬
+</div>
+
+<h3>
+Películas de Studio Ghibli
+</h3>
+
+<p>
+Por esas historias bonitas que hacen
+soñar y sentir.
+</p>
+
+</div>
+
+
+<div class="tarjeta">
+
+<div class="emoji">
+🌙
+</div>
+
+<h3>
+Las noches bonitas
+</h3>
+
+<p>
+Esos momentos tranquilos que hacen
+que uno sonría.
+</p>
+
+</div>
+
+
+<div class="tarjeta">
+
+<div class="emoji">
+☁️
+</div>
+
+<h3>
+Los días tranquilos
+</h3>
+
+<p>
+Porque también hay belleza
+en los momentos sencillos.
+</p>
+
+</div>
+
+
+<div class="tarjeta">
+
+<div class="emoji">
+💗
+</div>
+
+<h3>
+Las cosas que me hacen sonreír
+</h3>
+
+<p>
+Hay pequeñas cosas que inevitablemente
+hacen pensar en ti.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     PÁGINA 3 - CARTA
+===================================== -->
+
+<section class="pagina" id="pagina3">
+
+<div class="globos">
+
+<div class="globo">🎈</div>
+<div class="globo">🎈</div>
+<div class="globo">🎈</div>
+<div class="globo">🎈</div>
+<div class="globo">🎈</div>
+
+</div>
+
+<h2>
+💌 Una pequeña carta para ti
+</h2>
+
+<div class="carta">
+
+<p>
+
+<strong>
+Feliiiiiiz cumpleaños al niño más bonito
+y al niño de mis ojos. 💗🎂
+</strong>
+
+</p>
+
+<p>
+
+Deseo de todo corazón que este nuevo
+año de tu vida esté lleno de momentos
+increíbles, muchas sonrisas, aventuras
+bonitas y personas que te quieran muchísimo.
+
+</p>
+
+<p>
+
+Que cumplas todo lo que te propones
+y que nunca dejes de luchar por esas
+cosas que te hacen feliz.
+
+</p>
+
+<p>
+
+Recuerda siempre que eres muy valiente
+y fuerte, incluso en esos momentos
+en los que quizá tú mismo no te das
+cuenta de todo lo que eres capaz de hacer.
+
+</p>
+
+<p>
+
+Quiero que recuerdes que siempre
+estaré orgullosa de ti, de tus logros,
+de tus esfuerzos y de la persona que eres.
+
+</p>
+
+<p>
+
+No tienes que ser perfecto para ser increíble.
+Simplemente sigue siendo tú, porque eso
+ya es algo muy especial.
+
+</p>
+
+<p>
+
+Espero que este cumpleaños esté lleno
+de momentos que puedas recordar
+con una sonrisa.
+
+</p>
+
+<p>
+
+Que nunca te falten motivos para sonreír,
+personas que te apoyen y sueños por cumplir.
+
+</p>
+
+<p>
+
+Gracias por ser una persona tan especial.
+
+</p>
+
+<p>
+
+<strong>
+
+Te deseo un cumpleaños increíble
+y una vida llena de cosas bonitas. 💕🎂🎈
+
+</strong>
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     PÁGINA 4 - FOTOS
+===================================== -->
+
+<section class="pagina" id="pagina4">
+
+<h2>
+📸 Nuestros recuerdos
+</h2>
+
+<div class="mensaje-fotos">
+
+💗 Aquí están nuestros recuerdos.
+<br>
+Espero que cada foto te saque una sonrisa. 💗
+
+</div>
+
+<div class="galeria">
+
+<div class="foto">
+<img src="foto1.jpg"
+alt="Foto 1"
+onerror="mostrarError(this,1)">
+</div>
+
+<div class="foto">
+<img src="foto2.jpg"
+alt="Foto 2"
+onerror="mostrarError(this,2)">
+</div>
+
+<div class="foto">
+<img src="foto3.jpg"
+alt="Foto 3"
+onerror="mostrarError(this,3)">
+</div>
+
+<div class="foto">
+<img src="foto4.jpg"
+alt="Foto 4"
+onerror="mostrarError(this,4)">
+</div>
+
+<div class="foto">
+<img src="foto5.jpg"
+alt="Foto 5"
+onerror="mostrarError(this,5)">
+</div>
+
+<div class="foto">
+<img src="foto6.jpg"
+alt="Foto 6"
+onerror="mostrarError(this,6)">
+</div>
+
+<div class="foto">
+<img src="foto7.jpg"
+alt="Foto 7"
+onerror="mostrarError(this,7)">
+</div>
+
+<div class="foto">
+<img src="foto8.jpg"
+alt="Foto 8"
+onerror="mostrarError(this,8)">
+</div>
+
+<div class="foto">
+<img src="foto9.jpg"
+alt="Foto 9"
+onerror="mostrarError(this,9)">
+</div>
+
+<div class="foto">
+<img src="foto10.jpg"
+alt="Foto 10"
+onerror="mostrarError(this,10)">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     PÁGINA 5 - MÚSICA
+===================================== -->
+
+<section class="pagina" id="pagina5">
+
+<h2>
+🎵 Una canción para ti
+</h2>
+
+<div class="reproductor">
+
+<h2>
+Afuera — Caifanes
+</h2>
+
+<p>
+Una canción para acompañar esta pequeña sorpresa. 💗
+</p>
+
+
+<!-- VIDEO DE YOUTUBE -->
+
+<iframe
+class="video-musica"
+src="https://www.youtube.com/embed/gBt1jOtKz6Y"
+title="Afuera - Caifanes"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen>
+</iframe>
+
+
+<p>
+🎵 Presiona ▶️ para comenzar la canción 💗
+</p>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     PÁGINA 6 - FINAL
+===================================== -->
+
+<section class="pagina" id="pagina6">
+
+<div class="portada">
+
+<h1>
+💗 Feliz cumpleaños, Zahidcito 💗
+</h1>
+
+<p>
+Espero que este pequeño detalle
+te saque una sonrisa.
+</p>
+
+<p>
+🎂 Que tengas un cumpleaños increíble 🎂
+</p>
+
+<p>
+✨ Nunca olvides lo valioso que eres ✨
+</p>
+
+<p>
+💗 Y que siempre tengas muchos motivos
+para sonreír 💗
+</p>
+
+<p>
+🦖🌅🎬💗🎂
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     MENÚ
+===================================== -->
+
+<div class="navegacion">
+
+<button onclick="irAPagina(1)">
+💗 Inicio
+</button>
+
+<button onclick="irAPagina(2)">
+✨ Recuerdos
+</button>
+
+<button onclick="irAPagina(3)">
+💌 Carta
+</button>
+
+<button onclick="irAPagina(4)">
+📸 Fotos
+</button>
+
+<button onclick="irAPagina(5)">
+🎵 Música
+</button>
+
+<button onclick="irAPagina(6)">
+🎂 Final
+</button>
+
+</div>
+
+
+<script>
+
+
+/* =====================================
+   CAMBIAR DE PÁGINA
+===================================== */
+
+function irAPagina(numero){
+
+    document
+    .querySelectorAll(".pagina")
+    .forEach(function(pagina){
+
+        pagina.classList.remove("activa");
+
+    });
+
+
+    document
+    .getElementById("pagina" + numero)
+    .classList.add("activa");
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================
+   BOTÓN COMENZAR
+===================================== */
+
+function comenzar(){
+
+    irAPagina(2);
+
+}
+
+
+/* =====================================
+   ERROR DE FOTOS
+===================================== */
+
+function mostrarError(imagen,numero){
+
+    imagen.style.display="none";
+
+
+    const mensaje =
+    document.createElement("div");
+
+
+    mensaje.innerHTML =
+    "📷<br>" +
+    "<strong>No se encontró foto" +
+    numero +
+    ".jpg</strong><br>" +
+    "<small>Revisa el nombre del archivo.</small>";
+
+
+    mensaje.style.padding="40px 10px";
+    mensaje.style.color="#a51f5b";
+    mensaje.style.fontSize="18px";
+
+
+    imagen.parentElement.appendChild(mensaje);
+
+}
+
+</script>
+
+
+</body>
+</html>
+```
